@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  eom-html:
+    image: nginx:alpine
+    volumes:
+      - ./dist:/usr/share/nginx/html
+    restart: unless-stopped
+    networks:
+      - eom
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.eomFront.rule=Host(`eom.binom.studio`)
+      - traefik.http.routers.eomFront.entrypoints=web
+      - traefik.http.routers.eomFront=eomFront
+      - traefik.http.routers.eomFront.middlewares=toHttpsRedirect
+      - traefik.http.middlewares.toHttpsRedirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.toHttpsRedirect.redirectscheme.permanent=true
+
+      - traefik.http.routers.eomFrontSecure.rule=Host(`eom.binom.studio`)
+      - traefik.http.routers.eomFrontSecure.entrypoints=websecure
+      - traefik.http.routers.eomFrontSecure=eomFrontSecure
+      - traefik.http.routers.eomFrontSecure.tls=true
+      - traefik.http.services.eomFrontSecure.loadbalancer.server.port=80
+      - traefik.http.routers.eomFrontSecure.tls.certresolver=myresolver
+      - traefik.http.middlewares.toNonWwwRedirect.redirectregex.regex=^https?://www.(.*)
+      - traefik.http.middlewares.toNonWwwRedirect.redirectregex.replacement=https://$${1}
+      - traefik.http.middlewares.toNonWwwRedirect.redirectregex.permanent=true
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  eom:
+    external: true

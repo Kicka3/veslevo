@@ -1,0 +1,117 @@
+@use 'sass:meta';
+
+// USER VARIABLES SECTION
+
+:root {
+	--color-accent: orange;
+	--bg-dark: #1A1A1A;
+	--bg-middle: #D0CCC1;
+	--text-white: #FFFFFF;
+	--text-main: #D0CCC1;
+	--text-light: #828181;
+	--text-dark: #383838;
+}
+
+$fontsize: 17px; // Body Font Size
+$lineheight: 1.65; // Document Line Height
+$userfont: gotham-pro, sans-serif; // User Font Family
+$secondaryfont: roboto, sans-serif; // User Font Family
+
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px;
+$gutter: $grid-gutter-width;
+
+	// Breakpoint
+$grid-breakpoint-l: 1366px;
+//$grid-breakpoint-m: 1200px;
+$grid-breakpoint-s: 767px;
+
+$tablet: 1359px;
+$mobile: 767px;
+
+	// Margin
+$grid-margin-l: 80px;
+$grid-margin-m: 24px;
+$grid-margin-s: 16px;
+
+
+@mixin font($fname, $fstyle, $fweight, $furl) {
+	@font-face {
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
+		src: url($furl) format('woff2');
+	}
+}
+
+@include font('gotham-pro', normal, 400, '../fonts/gotham-pro-regular.ttf');
+@include font('gotham-pro', normal, 700, '../fonts/gotham-pro-bold.ttf');
+
+body {
+	font-family: $userfont;
+	font-size: $fontsize;
+	line-height: $lineheight;
+	min-width: 360px;
+	position: relative;
+	overflow-x: hidden;
+	background-color: var(--bg-dark);
+	color: var(--text-main);
+}
+
+body.no-scroll {
+	overflow: hidden;
+}
+
+a {
+	color: var(--text-main);
+
+	&:hover {
+		color: var(--text-main);
+	}
+}
+
+
+// OPTIONAL SETTINGS
+
+::placeholder {
+	// color: #666;
+}
+
+::selection {
+	// background-color: var(--color-accent);
+	// color: #fff;
+}
+
+input,
+textarea {
+	// outline: none;
+	// &:focus:required:invalid {
+	//   border-color: red;
+	// }
+	// &:required:valid {
+	//   border-color: green;
+	// }
+}
+
+[class*="--m-container"] {
+	width: 100%;
+	max-width: $grid-breakpoint-l;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $grid-margin-l;
+	padding-right: $grid-margin-l;
+
+	@media screen and (max-width: $tablet) {
+		padding-left: $grid-margin-m;
+		padding-right: $grid-margin-m;
+	}
+
+	@media screen and (max-width: $mobile) {
+		padding-left: $grid-margin-s;
+		padding-right: $grid-margin-s;
+	}
+}
+
+
+
