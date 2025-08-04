@@ -1,54 +1,254 @@
 .hero {
-  height: 608px;
-
-  @media (min-width: 1780px) {
-    height: 800px;
-  }
+  height: 547px;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: $tablet) {
     height: 363px;
   }
 
   @media (max-width: $mobile) {
-    height: 350px;
+    height: 440px;
   }
 
   &__bg {
     height: 100%;
-    background-image: url("../images/dist/main-banner.png");
-    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  // Слайдер на фоне
+  .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2;
+    }
+
+    .tns-item {
+      height: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Логотип
+  &__logo {
+    position: absolute;
+    width: 200px;
+    top: 53px;
+    left: 65px;
+    z-index: 10;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
 
-    @media (min-width: 1780px) {
-      margin: 0 -280px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: $tablet) { 
+      width: 140px;
+      top: 22px;
+    }
+
+    @media (max-width: $tablet-small) { 
+      width: 98px;
+      top: 22px;
+      left: 40px;
+    }
+
+    @media (max-width: 620px) { 
+      display: none;
+    }
+  }
+
+  // Контакты
+  &__contacts {
+    position: absolute;
+    gap: 14px;
+    top: 70px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $tablet) {
+      top: 30px;
+    }
+
+    @media (max-width: 620px) { 
+      width: 100%;
+      right: 0;
+      justify-content: center;
+      top: 24px;
+      gap: 10px;
     }
 
     @media (max-width: $mobile) {
-      background-position: 87%;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__phone {
+    color: var(--text-white);
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 27px;
+
+    @media (max-width: $tablet) {
+      font-size: 22px;
+    }
+    
+    @media (max-width: $tablet-small) {
+      font-size: 18px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 12px;
+
+    a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      @media (max-width: $tablet-small) {
+        width: 28px;
+        height: 28px;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+
+        @media (max-width: $tablet-small) {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  // Основной контент
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 40px;
+
+    @media (max-width: $tablet) {
+      top: 54%;
     }
   }
 
   &__title {
-    margin-top: 10px;
-    text-transform: uppercase;
-    font-size: 80px;
-    font-weight: bold;
-    line-height: 80px;
-    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
     color: var(--text-white);
+    margin-bottom: 40px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
     @media (max-width: $tablet) {
-      margin-top: -12px;
-      font-size: 52px;
-      line-height: 52px;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: $tablet-small) {
+      font-size: 24px;
     }
 
     @media (max-width: $mobile) {
-      margin-top: 22px;
-      font-size: 30px;
-      line-height: 33px;
+      font-size: 20px;
+    }
+  }
+
+  &__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-white);
+    margin-bottom: 50px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: $tablet) {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: $tablet-small) {
+      font-size: 14px;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #A1B63D;
+    color: var(--text-white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 28px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background: #8FA335;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: $tablet-small) {
+      font-size: 14px;
+      padding: 12px 30px;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 12px 30px;
+      font-size: 14px;
     }
   }
 }

@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const menuModal = document.getElementById("menu-modal");
-  const openMenuModalBtn = document.querySelector(".header__menu");
-  const closeMenuModalBtn = document.querySelector(".menu-modal__close");
 
+  // Модальные окна
+  const menuModal = document.getElementById("menu-modal");
+  const openMenuModalBtn = document.querySelector(".button-burger");
+  const closeMenuModalBtn = document.querySelector(".menu-modal__close");
+  
   const contactModal = document.getElementById("contact-modal");
   const openContactModalBtn = document.querySelector(".header__button");
   const closeContactModalBtn = document.querySelector(".contact-modal__close");
@@ -17,10 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
     event.stopPropagation();
     closeAllModals();
     menuModal?.classList.add("menu-modal--active");
+    document.body.classList.add("no-scroll");
   });
 
   closeMenuModalBtn?.addEventListener("click", () => {
-    menuModal?.classList.remove("menu-modal--active");
+    closeAllModals();
+  });
+
+  // Подменю в модальном окне
+  const submenuLinks = document.querySelectorAll('.menu-modal__link--has-submenu');
+
+  submenuLinks.forEach(link => {
+    const sublist = link.nextElementSibling;
+    const parentLi = link.closest('li');
+    if (sublist && sublist.classList.contains('menu-modal__sublist')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        link.classList.toggle('active');
+        sublist.classList.toggle('active');
+        parentLi.classList.toggle('active');
+      });
+    }
   });
 
   document.addEventListener("click", (event) => {
@@ -29,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       !menuModal.contains(event.target) &&
       !openMenuModalBtn.contains(event.target)
     ) {
-      menuModal.classList.remove("menu-modal--active");
+      closeAllModals();
     }
   });
 
@@ -49,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Hover эффекты для проектов
   const hoverImage = document.querySelector(".projects__hover-image");
   const hoverItems = document.querySelectorAll(".projects__item");
   const container = document.querySelector(".projects__list");
@@ -78,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Форматирование телефона
   document.querySelectorAll(".phone-input").forEach((input) => {
     input.addEventListener("input", formatPhone);
     input.addEventListener("blur", clearIfOnlyPrefix);
@@ -104,4 +125,22 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.value = "";
     }
   }
+
+   // Инициализация Tiny Slider
+   var slider = tns({
+    container: '.hero-slider',
+    items: 1,
+    autoplay: true,
+    autoplayTimeout: 20000, // Интервал 20 секунд
+    controls: false, // Отключаем кнопки навигации
+    nav: false, // Отключаем точки навигации
+    responsive: {
+      640: {
+        items: 1
+      },
+      1024: {
+        items: 1
+      }
+    }
+  });
 });
