@@ -1,0 +1,31 @@
+.hrefButton {
+  width: max-content;
+  padding: 15px 30px;
+  background-color: #748700;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    background-color: var(--color-additional);
+    color: white;
+    text-decoration: none;
+  }
+
+  @media (max-width: $tablet) {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}

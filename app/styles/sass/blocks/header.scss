@@ -62,7 +62,7 @@
   padding: 10px;
 
   &:hover {
-    color: #0fad48;
+    color: var(--color-additional);
   }
 
   @media (max-width: $tablet) {

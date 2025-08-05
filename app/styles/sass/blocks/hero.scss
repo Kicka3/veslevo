@@ -225,7 +225,7 @@
   &__button {
     display: inline-block;
     padding: 15px 40px;
-    background: #A1B63D;
+    background: var(--color-additional);
     color: var(--text-white);
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
