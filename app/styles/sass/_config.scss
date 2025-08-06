@@ -98,7 +98,6 @@ a {
 	}
 }
 
-
 // OPTIONAL SETTINGS
 
 ::placeholder {
@@ -108,17 +107,6 @@ a {
 ::selection {
 	// background-color: var(--color-accent);
 	// color: #fff;
-}
-
-input,
-textarea {
-	// outline: none;
-	// &:focus:required:invalid {
-	//   border-color: red;
-	// }
-	// &:required:valid {
-	//   border-color: green;
-	// }
 }
 
 [class*="--m-container"] {

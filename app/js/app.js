@@ -143,4 +143,173 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // Галерея
+  const gallery = {
+    currentIndex: 0,
+    images: [],
+    modal: null,
+    modalImage: null,
+    thumbnails: [],
+    mainImage: null,
+    navArrows: null,
+    modalNavArrows: null,
+    modalCloseBtn: null,
+
+    init() {
+      this.modal = document.querySelector('.gallery__modal');
+      this.modalImage = document.querySelector('.gallery__modal-image');
+      this.thumbnails = document.querySelectorAll('.gallery__thumbnail');
+      this.mainImage = document.querySelector('.gallery__main-image');
+      this.navArrows = document.querySelectorAll('.gallery__nav-arrow');
+      this.modalNavArrows = document.querySelectorAll('.gallery__modal-nav-arrow');
+      this.modalCloseBtn = document.querySelector('.gallery__modal-close');
+
+      // Собираем все изображения
+      this.images = Array.from(this.thumbnails).map(thumb => 
+        thumb.getAttribute('data-image')
+      );
+
+      this.bindEvents();
+      this.updateMainImage(0);
+    },
+
+    bindEvents() {
+      // Клик по миниатюрам
+      this.thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+          this.updateMainImage(index);
+          this.openModal(index);
+        });
+      });
+
+      // Клик по главному изображению
+      this.mainImage?.addEventListener('click', () => {
+        this.openModal(this.currentIndex);
+      });
+
+      // Навигация в главном изображении
+      this.navArrows.forEach((arrow, index) => {
+        arrow.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const direction = index === 0 ? -1 : 1;
+          this.navigate(direction);
+        });
+      });
+
+      // Навигация в модальном окне
+      this.modalNavArrows.forEach((arrow, index) => {
+        arrow.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const direction = index === 0 ? -1 : 1;
+          this.navigateModal(direction);
+        });
+      });
+
+      // Закрытие модального окна
+      this.modalCloseBtn?.addEventListener('click', () => {
+        this.closeModal();
+      });
+
+      // Закрытие по клику вне изображения
+      this.modal?.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.closeModal();
+        }
+      });
+
+      // Закрытие по Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+          this.closeModal();
+        }
+      });
+    },
+
+    updateMainImage(index) {
+      this.currentIndex = index;
+      this.mainImage.src = this.images[index];
+      
+      // Обновляем активную миниатюру
+      this.thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+      });
+    },
+
+    navigate(direction) {
+      let newIndex = this.currentIndex + direction;
+      if (newIndex < 0) newIndex = this.images.length - 1;
+      if (newIndex >= this.images.length) newIndex = 0;
+      this.updateMainImage(newIndex);
+    },
+
+    navigateModal(direction) {
+      let newIndex = this.currentIndex + direction;
+      if (newIndex < 0) newIndex = this.images.length - 1;
+      if (newIndex >= this.images.length) newIndex = 0;
+      this.currentIndex = newIndex;
+      this.modalImage.src = this.images[newIndex];
+    },
+
+    openModal(index) {
+      this.currentIndex = index;
+      this.modalImage.src = this.images[index];
+      this.modal.classList.add('active');
+      document.body.classList.add('no-scroll');
+    },
+
+    closeModal() {
+      this.modal.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    }
+  };
+
+  // Инициализация галереи
+  if (document.querySelector('.gallery')) {
+    gallery.init();
+  }
+
+  // FAQ Аккордеон в ВОПРОСЫ
+  const faqAccordion = {
+    init() {
+      const items = document.querySelectorAll('.questions__item');
+      
+      items.forEach(item => {
+        const header = item.querySelector('.questions__header');
+        const toggle = item.querySelector('.questions__toggle');
+        
+        header.addEventListener('click', () => {
+          this.toggleItem(item);
+        });
+        
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.toggleItem(item);
+        });
+      });
+    },
+
+    toggleItem(item) {
+      const isActive = item.classList.contains('active');
+      
+      // Закрываем все остальные элементы
+      document.querySelectorAll('.questions__item').forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      // Переключаем текущий элемент
+      if (!isActive) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    }
+  };
+
+  // Инициализация FAQ аккордеона
+  if (document.querySelector('.questions')) {
+    faqAccordion.init();
+  }
 });
