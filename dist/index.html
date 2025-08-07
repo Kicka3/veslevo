@@ -7,16 +7,20 @@
 	<!-- <base href="/"> -->
 
 	<title>Веслево</title>
-	<meta name="description" content="ЭОМ-Проект — российская проектная компания, специализирующаяся на разработке архитектурных и конструктивных решений, а также всех видов инженерных систем">
+	<meta name="description" content="Веслево">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="icon" href="images/favicon.png">
+	<link rel="icon" href="images/src/mainPage/logo.png">
 	<meta property="og:image" content="images/dist/preview.jpg">
 
-	<script src="js/app.min.js" defer></script>
+	<!-- <script src="js/app.min.js" defer></script> -->
+  	<script src="js/app.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
 
 	<link rel="stylesheet" href="css/app.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 
 </head>
 
@@ -24,128 +28,241 @@
 
 
 <div class="app--m-container">
-
   <header class="header">
+  <nav class="header__nav">
   <div class="header__left">
-    <a href="index.html">
-      <img src="images/dist/logo-main.svg">
-    </a>
-  </div>
-  <div class="header__right">
-    <div class="header__phone">
-      <a href="tel:+74956095254">+7 (495) 609-52-54</a>
-    </div>
     <div class="header__button">
-      
-      <div class="button">
-  <span>Связаться</span>
+      <div class="button-burger">
+  <i class="fas fa-bars"></i>
 </div>
 
     </div>
-    <div class="header__menu">
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div class="menu-modal" id="menu-modal">
-  <div class="menu-modal__container">
-    <div class="menu-modal__close">
-      <img src="images/dist/x.svg">
-    </div>
-    <div class="menu-modal__logo">
+    <div class="header__logo">
       <a href="index.html">
-        <img src="images/dist/logo-main-dark.svg">
+        <img src="images/dist/mainPage/logo.png" alt="Logo">
       </a>
     </div>
-
-    <div class="menu-modal__list">
-      <a class="menu-modal__link menu-modal__link--active" href="about.html">О компании</a>
-      <a class="menu-modal__link" href="projects.html">Проекты</a>
-      <a class="menu-modal__link" href="contacts.html">Контакты</a>
-    </div>
-    <div class="menu-modal__contacts">
-      <a href="tel:74956095254">+7 (495) 609-52-54</a>
-      <a href="mailto:proekt@emeo.ru">proekt@emeo.ru</a>
-    </div>
   </div>
-</div>
 
-  <div class="contact-modal" id="contact-modal">
-  <div class="contact-modal__content">
-    <div class="contact-modal__close">
-      <img src="images/dist/x.svg">
-    </div>
+    <ul class="header__menu">
+      <li class="header__menu-item header__menu-item--active"><a href="main-page.html">О нас</a></li>
+      <li class="header__menu-item"><a href="houses.html">Дома</a></li>
+      <li class="header__menu-item"><a href="#">Спецпредложения</a></li>
+      <li class="header__menu-item"><a href="#">Фотогалерея</a></li>
+      <li class="header__menu-item"><a href="#">Развлечения</a></li>
+      <li class="header__menu-item"><a href="#">Контакты</a></li>
+      <li class="header__menu-item"><a href="#">Корпоративным клиентам</a></li>
+      <li class="header__menu-item"><a href="#">Поиск брони</a></li>
+    </ul>
+  </nav>
+  <nav class="menu-modal" id="menu-modal">
+  <div class="menu-modal__container">
 
-      <div class="contact-modal__wrapper">
-        <div class="contact-modal__images">
-          <img class="contact-modal__image-1" src="images/dist/contacts-1.png">
-          <img class="contact-modal__image-2" src="images/dist/contacts-2.png">
-        </div>
-        <form class="form" action="">
-  <div class="form__title">Свяжитесь с нами</div>
-  <div class="form__field">
-    <input type="text" id="name" placeholder="" required>
-    <label for="name">Ваше имя</label>
-  </div>
-  <div class="form__field">
-    <input class="phone-input" type="tel" placeholder="" maxlength="18" required>
-    <label for="phone">Телефон</label>
-  </div>
-  <div class="form__field">
-    <input type="text" id="message" placeholder="" required>
-    <label for="message">Сообщение</label>
-  </div>
-  <div class="form__bottom">
-    <button class="form__button" type="submit">
-      
-      <div class="button">
-  <span>Отправить</span>
-</div>
-
+    <button class="menu-modal__close" aria-label="Close menu">
+      <img src="images/dist/x.svg" alt="Close">
     </button>
-    <div class="form__politic">Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a></div>
-  </div>
-</form>
 
+   <div>
+    <ul class="menu-modal__list">
+      <li><a class="menu-modal__link menu-modal__link--active" href="#">О нас</a></li>
+      <li><a class="menu-modal__link" href="#">Дома</a></li>
+      <li><a class="menu-modal__link" href="#">Спецпредложения</a></li>
+      <li><a class="menu-modal__link" href="#">Фотогалерея</a></li>
+      <li><a class="menu-modal__link" href="#">Развлечения</a></li>
+      <li><a class="menu-modal__link menu-modal__link--has-submenu" href="#">Контакты</a>
+      
+        <ul class="menu-modal__sublist">
+          <li><a class="menu-modal__sublink" href="#">Контакты</a></li>
+          <li><a class="menu-modal__sublink" href="#">Способы оплаты</a></li>
+          <li><a class="menu-modal__sublink" href="#">Документы</a></li>
+        </ul>
+      </li>
+
+      <li><a class="menu-modal__link" href="#">Корпоративным клиентам</a></li>
+      <li><a class="menu-modal__link" href="#">Поиск брони</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <section class="menu-modal__contacts">
+      <div class="menu-modal__phone">
+        <img src="images/dist/mainPage/phone.png" alt="Phone">
+        <a href="tel:+74958461050">+7 (495) 846-10-50</a>
+      </div>
+      <div class="menu-modal__social">
+        <a href="#" aria-label="WhatsApp"><img src="images/dist/mainPage/wa.png" alt="WhatsApp"></a>
+        <a href="#" aria-label="Telegram"><img src="images/dist/mainPage/tg.png" alt="Telegram"></a>
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/mail2.png" alt="Email"></a>
+      </div>
+    </section>
+
+    <div class="menu-modal__buttons">
+      <a href="#" class="menu-modal__button">Забронировать</a>
+      <div class="menu-modal__social-icons">
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/vk.png" alt="Vk"></a>
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/trip.png" alt="Visor"></a>
+      </div>
     </div>
+   </div>
+
   </div>
-</div>
-
-
-
+</nav>
 </header>
-
-
-
 
   <main>
     <div class="hero">
-  <div class="hero__bg">
-    <h1 class="hero__title">Комплексное <br/> проектирование</h1>
-  </div>
-</div>
+    <div class="hero__bg">
+      <!-- Логотип -->
+   <div>
+    <div class="hero__logo">
+      <img src="images/dist/mainPage/logo-background.png" alt="Веслево Клуб">
+    </div>
 
+    <!-- Контакты -->
+    <div class="hero__contacts">
+      <a href="tel:+74958461050" class="hero__phone">+7 (495) 846-10-50</a>
+      <div class="hero__social">
+        <a href="#" aria-label="Phone"><img src="images/dist/mainPage/icon-whatsapp-logo.svg" alt="WhatsApp"></a>
+        <a href="#" aria-label="Telegram"><img src="images/dist/mainPage/icon-telegram-logo.svg" alt="Telegram"></a>
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/icon-mail.svg" alt="Email"></a>
+      </div>
+    </div>
+   </div>
+
+      <!-- Основной контент -->
+      <div class="hero__content">
+        <h1 class="hero__title">Веслево Клуб — отдых со вкусом</h1>
+        <p class="hero__subtitle">Здесь природа встречается с комфортом</p>
+        <a href="#" class="hero__button">Забронировать</a>
+      </div>
+
+      <!-- Слайдер на фоне -->
+      <div class="hero-slider">
+        <div><img src="images/dist/mainPage/1.jpg" alt="Slide 1"></div>
+        <div><img src="images/dist/mainPage/2.jpg" alt="Slide 2"></div>
+        <div><img src="images/dist/mainPage/3.jpg" alt="Slide 3"></div>
+        <div><img src="images/dist/mainPage/4.jpg" alt="Slide 4"></div>
+        <div><img src="images/dist/mainPage/5.jpg" alt="Slide 5"></div>
+        <div><img src="images/dist/mainPage/6.jpg" alt="Slide 6"></div>
+        <div><img src="images/dist/mainPage/7.jpg" alt="Slide 7"></div>
+      </div>
+    </div>
+  </div>
     <section class="app__section">
       <div class="about">
   <div class="about__wrapper">
-    <div class="about__label">
-      <span>/</span>
-      <h2>О компании</h2>
-    </div>
-    <div class="about__main">
-      <div class="about__content">
-        <div class="about__description">ЭОМ-Проект — российская проектная компания, специализирующаяся на разработке архитектурных и конструктивных решений, а также всех видов инженерных систем</div>
-        <div class="about__description-small">Наш опыт сотрудничества с крупными застройщиками позволяет нам предлагать решения, которые сочетают эстетическую выразительность, инженерную точность и экономическую эффективность</div>
+    <div class="about__content">
+      <div class="about__label">
+        <h2>Добро пожаловать в<br>“Веслево Клуб”!</h2>
       </div>
-      <a href="about.html">
-        
-        <div class="button-line">
-  <span>Узнать больше</span>
-  <img src="images/dist/arrow-right.svg">
+      <div class="about__description">
+        Гостевые дома рядом с живописным Плещеевым озером в Переславле-Залесском.<br>
+        Уютное место для тех, кто ищет природу и настоящий отдых, вдали от городской суеты,<br> среди живописных пейзажей и чистого воздуха.
+      </div>
+      <div class="about__features">
+        <div class="about__feature">
+          <!-- <div class="about__feature-icon">
+            <img src="images/dist/mainPage/icon-house.svg" alt="Дом">
+          </div> -->
+          <span>🏡 Просторные дома на разное количество гостей.</span>
+        </div>
+        <div class="about__feature">
+          <!-- <div class="about__feature-icon">
+            <img src="images/dist/mainPage/icon-leaf.svg" alt="Озеро">
+          </div> -->
+          <span>🌿 Рядом - пруд, а всего в 7 минутах езды  - знаменитое Плещеево озеро.</span>
+        </div>
+        <div class="about__feature">
+          <!-- <div class="about__feature-icon">
+            <img src="images/dist/mainPage/icon-fire.svg" alt="Отдых">
+          </div> -->
+          <!-- <span>Здесь можно жарить шашлыки, гулять по лесным тропинкам и отдыхать на террасе.</span> -->
+          <span>🔥 Здесь можно жарить шашлыки, гулять по лесным тропинкам и отдыхать на террасе.</span>
+        </div>
+      </div>
+      <div class="about__description-small">
+        Приезжайте за покоем и уединением - здесь вас всегда ждут! 
+      </div>
+    </div>
+    <div class="about__image">
+      <img src="images/src/mainPage/8.JPG" alt="Веслево Клуб">
+    </div>
+  </div>
 </div>
 
-      </a>
+    </section>
+    <section class="app__section">
+      <div class="variants">
+  <div class="variants__wrapper">
+
+    <!-- Первый коттедж -->
+    <div class="variants__section">
+      <div class="variants__image">
+        <img src="images/src/mainPage/9.jpg" alt="Коттедж стандартный">
+      </div>
+      <div class="variants__content">
+        <div class="variants__content-wrapper">
+          <h3 class="variants__title">Коттедж стандартный с мангальной зоной</h3>
+          <p class="variants__description">
+            Просторный и тёплый, выполненный в натуральных деревянных тонах с элегантностью эко-дизайна. Здесь с легкостью смогут разместиться 10 человек.
+          </p>
+          <div class="variants__button-wrapper">
+            
+            
+            <a href="#" class="hrefButton">
+  <span>Забронировать</span>
+</a>
+
+          </div>
+        </div>
+        </div>
     </div>
+
+    <!-- Второй коттедж -->
+    <div class="variants__section variants__section--reverse">
+      <div class="variants__image">
+        <img src="images/src/mainPage/10.jpg" alt="Коттедж стандартный">
+      </div>
+      <div class="variants__content">
+        <div class="variants__content-wrapper">
+          <h3 class="variants__title">Коттедж улучшенный с мангальной зоной</h3>
+          <p class="variants__description">
+            Дом, вдохновлённый Провансом, наполнен светом и уютом. Мятные оттенки в интерьере гармонично сочетаются с натуральными материалами. Вместимость 10 человек.
+          </p>
+          <div class="variants__button-wrapper">
+            
+            
+            <a href="#" class="hrefButton">
+  <span>Забронировать</span>
+</a>
+
+          </div>
+        </div>
+        </div>
+    </div>
+
+        <!-- Третий коттедж -->
+        <div class="variants__section">
+          <div class="variants__image">
+            <img src="images/src/mainPage/11.jpg" alt="Коттедж стандартный">
+          </div>
+          <div class="variants__content">
+            <div class="variants__content-wrapper">
+              <h3 class="variants__title">Коттедж стандартный с мангальной зоной</h3>
+              <p class="variants__description">
+                Просторный и тёплый, выполненный в натуральных деревянных тонах с элегантностью эко-дизайна. Здесь с легкостью смогут разместиться 10 человек.
+              </p>
+              <div class="variants__button-wrapper">
+                
+                
+                <a href="#" class="hrefButton">
+  <span>Забронировать</span>
+</a>
+
+              </div>
+            </div>
+            </div>
+        </div>
   </div>
 </div>
 
@@ -153,273 +270,358 @@
     <section class="app__section">
       <div class="services">
   <div class="services__wrapper">
-    <div class="services__label">
-      <span>/</span>
-      <h2>Услуги</h2>
+    <div class="services__header">
+      <h2 class="services__title">УДОБСТВА И УСЛУГИ</h2>
+      <p class="services__subtitle">Почувствуйте себя как дома!</p>
     </div>
-
-    <div class="services__cards">
-      <div class="services__card">
-        <img src="images/dist/services-1.png">
-        <div class="services__card-name">Архитектура и дизайн</div>
-        <div class="services__card-text">Разрабатываем архитектурные и дизайнерские решения с учётом всех коммуникаций. Реалистичная визуализация показывает будущее пространство, а индивидуальный подход сочетает эстетику и функциональность.</div>
-      </div>
-      <div class="services__card">
-        <img src="images/dist/services-2.png">
-        <div class="services__card-name">Инженерные системы</div>
-        <div class="services__card-text">Проектируем инженерные системы с применением BIM-технологий и 3D-моделирования. Решения подходят для объектов любого масштаба, а документация и авторский надзор обеспечивают соответствие нормам.</div>
-      </div>
-    </div>
-
-    <div class="services__list">
+    
+    <div class="services__grid">
       <div class="services__item">
-        <img src="images/dist/services-1.png">
-        <div class="services__item-content">
-          <div class="services__item-content-title">Архитектура и дизайн</div>
-          <div class="services__item-content-desk">
-            Разрабатываем архитектурные и дизайнерские решения для зданий и внутренних пространств любого назначения. Проекты создаются в связке с инженерами, что позволяет учесть все коммуникации ещё на стадии проектирования.
-            <br/>
-            <br/>
-            Уделяем внимание каждому элементу — от планировки до выбора материалов, а реалистичная визуализация помогает увидеть будущее пространство до его реализации. Индивидуальный подход гарантирует гармонию эстетики и функциональности, соответствующую вашим задачам и ожиданиям.
-          </div>
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-1.png" alt="24/7">
         </div>
+        <h3 class="services__item-title">24/7</h3>
+        <p class="services__item-text">Круглосуточное гостеприимство</p>
       </div>
-      <div class="services__item">
-        <img src="images/dist/services-2.png">
-        <div class="services__item-content">
-          <div class="services__item-content-title">Инженерные системы</div>
-          <div class="services__item-content-desk">
-            Проектируем инженерные системы любой сложности с применением BIM-технологий, обеспечивая точное моделирование и согласование всех сетей. Работа ведётся в 3D, что позволяет выявлять и устранять коллизии ещё на этапе проектирования.
-            <br/>
-            <br/>
-            Создаём решения для объектов любого масштаба — от жилых домов до крупных коммерческих и производственных зданий. Полный комплект документации и авторский надзор гарантируют соответствие проекта всем нормам и требованиям.
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-    </section>
-    <section class="app__section">
-      <div class="projects">
-  <div class="projects__wrapper">
-    <div class="projects__top">
-      <div class="projects__label">
-        <span>/</span>
-        <h2>Проекты</h2>
-      </div>
-      <div class="projects__description">
-        Среди наших реализованных проектов — жилые дома, офисные пространства, производственные здания и торгово-развлекательные комплексы в Москве и других городах России, а также ведомственные и закрытые объекты
-      </div>
-    </div>
-
-    <div class="projects__container">
-      <div class="projects__blocks">
-        <div class="projects__block">
-          <img class="projects__block-img" src="images/dist/project-1.png">
-          <div class="projects__block-name">Лента</div>
-          <div class="projects__block-text">Проектирование</div>
-        </div>
-        <div class="projects__block">
-          <img class="projects__block-img" src="images/dist/project-2.png">
-          <div class="projects__block-name">Москва-Сити, башня Меркурий</div>
-          <div class="projects__block-text">Проектирование</div>
-        </div>
-        <div class="projects__block">
-          <img class="projects__block-img" src="images/dist/project-3.png">
-          <div class="projects__block-name">Воздвиженка, 9</div>
-          <div class="projects__block-text">Проектирование</div>
-        </div>
-        <div class="projects__block">
-          <img class="projects__block-img" src="images/dist/project-4.png">
-          <div class="projects__block-name">Ленинградский ж/д вокзал</div>
-          <div class="projects__block-text">Проектирование</div>
-        </div>
-        <div class="projects__block">
-          <img class="projects__block-img" src="images/dist/project-5.png">
-          <div class="projects__block-name">Почтовая, 7-1</div>
-          <div class="projects__block-text">Архитектура и дизайн</div>
-        </div>
-      </div>
-
-
-
-      <div class="projects__button">
-        
-        <div class="button-line">
-  <span>Все проекты</span>
-  <img src="images/dist/arrow-right.svg">
-</div>
-
-      </div>
-    </div>
-
-
-    <div class="projects__hover-image"></div>
-
-    <div class="projects__list">
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-1.png">
-        <div>Санаторий Архангельское</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-2.png">
-        <div>Лента</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-3.png">
-        <div>Воздвиженская 9</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-4.png">
-        <div>Ленинградский ж/д вокзал</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-5.png">
-        <div>Перекресток</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-1.png">
-        <div>En Group+</div>
-        <span>/</span>
-      </a>
-
-      <a href="project-page-1.html" class="projects__item" data-image="images/dist/project-2.png">
-        <div>Логопарк Север-4</div>
-      </a>
-
-      <a href="projects.html">
-        
-        <div class="button-line">
-  <span>Все проекты</span>
-  <img src="images/dist/arrow-right.svg">
-</div>
-
-      </a>
-
-    </div>
-  </div>
-</div>
-
-    </section>
-    <section class="app__section">
-      <div class="benefits">
-  <div class="benefits__wrapper">
-    <div class="benefits__label">
-      <span>/</span>
-      <h2>Преимущества</h2>
-    </div>
-
-    <div class="benefits__list">
-      <div class="benefits__row">
-        <div class="benefits__card">
-          <img class="benefits__card-img" src="images/dist/benefits-1.svg">
-          <div class="benefits__card-name">Полный спектр услуг</div>
-          <div class="benefits__card-text">Выполнение проектов под любой объект и предоставление работы в электронном и печатном виде</div>
-        </div>
-        <div class="benefits__card">
-          <img class="benefits__card-img" src="images/dist/benefits-2.svg">
-          <div class="benefits__card-name">Современные BIM-технологии</div>
-          <div class="benefits__card-text">Обнаружение и устранение коллизий на ранних этапах для сокращения сроков и повышения точности</div>
-        </div>
-      </div>
-      <div class="benefits__row">
-        <div class="benefits__card">
-          <img class="benefits__card-img" src="images/dist/benefits-3.svg">
-          <div class="benefits__card-name">Оптимальные решения</div>
-          <div class="benefits__card-text">Подбор наиболее экономически и технически выгодных подходов для сокращения затрат</div>
-        </div>
-        <div class="benefits__card">
-          <img class="benefits__card-img" src="images/dist/benefits-4.svg">
-          <div class="benefits__card-name">Сопровождение проекта</div>
-          <div class="benefits__card-text">Контроль реализации для гарантии соответствия проектной документации</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </section>
-    <section class="app__section">
-      <div class="contacts">
-  <div class="contacts__wrapper">
-    <div class="contacts__images">
-      <img class="contacts__image-1" src="images/dist/contacts-1.png">
-      <img class="contacts__image-2" src="images/dist/contacts-2.png">
-    </div>
-    <form class="form" action="">
-  <div class="form__title">Свяжитесь с нами</div>
-  <div class="form__field">
-    <input type="text" id="name" placeholder="" required>
-    <label for="name">Ваше имя</label>
-  </div>
-  <div class="form__field">
-    <input class="phone-input" type="tel" placeholder="" maxlength="18" required>
-    <label for="phone">Телефон</label>
-  </div>
-  <div class="form__field">
-    <input type="text" id="message" placeholder="" required>
-    <label for="message">Сообщение</label>
-  </div>
-  <div class="form__bottom">
-    <button class="form__button" type="submit">
       
-      <div class="button">
-  <span>Отправить</span>
-</div>
-
-    </button>
-    <div class="form__politic">Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a></div>
-  </div>
-</form>
-
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-2.png" alt="Wi-Fi">
+        </div>
+        <h3 class="services__item-title">Wi-Fi</h3>
+        <p class="services__item-text">Доступен бесплатно на всей территории</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-3.png" alt="Мангал">
+        </div>
+        <h3 class="services__item-title">Мангал</h3>
+        <p class="services__item-text">Крытая беседка и мангал</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-4.png" alt="Терраса">
+        </div>
+        <h3 class="services__item-title">Терраса</h3>
+        <p class="services__item-text">Веранда с мебелью под навесом</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-5.png" alt="Кухня">
+        </div>
+        <h3 class="services__item-title">Кухня</h3>
+        <p class="services__item-text">Есть всё необходимое для приготовления еды</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-6.png" alt="Парковка">
+        </div>
+        <h3 class="services__item-title">Парковка</h3>
+        <p class="services__item-text">Бесплатная на территории</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-7.png" alt="Бытовая техника">
+        </div>
+        <h3 class="services__item-title">Бытовая техника</h3>
+        <p class="services__item-text">Посудомоечная машина, холодильник, микроволновка, утюг, стиральная машина</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__item-icon">
+          <img src="images/dist/mainPage/icon-8.png" alt="Финальная уборка">
+        </div>
+        <h3 class="services__item-title">Финальная уборка</h3>
+        <p class="services__item-text">Бесплатная уборка при выезде</p>
+      </div>
+    </div>
   </div>
 </div>
 
     </section>
+      <div class="map">
+  <div class="map__wrapper">
+    <div id="map" class="map__container"></div>
+  </div>
+</div>
 
+<script src="js/env.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+<script>
+  ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+      center: [56.7369, 38.8514], // Координаты озера Плещеево
+      zoom: 10,
+      controls: ['zoomControl', 'geolocationControl']
+    });
 
+    // Добавляем маркер на карту
+    var myPlacemark = new ymaps.Placemark([56.7369, 38.8514], {
+      balloonContent: 'Озеро Плещеево'
+    }, {
+      preset: 'islands#brownDotIcon'
+    });
+
+    myMap.geoObjects.add(myPlacemark);
+  });
+</script>
+
+    <section class="app__section">
+      <div class="location">
+
+ <div class="location__content-inner">
+  <h3 class="location__title">Локация</h3>
+   <div class="location__wrapper">
+     <div class="location__section">
+       <div class="location__section-header-background">
+           <div class="location__section-header">
+             <p>НА<br>ТЕРРИТОРИИ</p>
+           </div>
+       </div>
+  
+       <ul class="location__section-list">
+         <li>мангальные зоны</li>
+         <li>парковка</li>
+         <li>пруд</li>
+         <li>спортивная площадка</li>
+       </ul>
+     </div>
+
+     <div class="location__section">
+       <div class="location__section-header-background">
+           <div class="location__section-header">
+             <p>ОТ НАС</p>
+           </div>
+       </div>
+  
+       <ul class="location__section-list">
+         <li>2 часа езды от Москвы</li>
+         <li>10 минут езды до Переславль-Залесского</li>
+         <li>1,8 км до Плещеева озера</li>
+       </ul>
+     </div>
+
+     <div class="location__section">
+       <div class="location__section-header-background">
+           <div class="location__section-header">
+             <p>РЯДОМ</p>
+           </div>
+       </div>
+  
+       <ul class="location__section-list">
+         <li>кафе</li>
+         <li>баня с чаном</li>
+         <li>конный клуб</li>
+         <li>музеи</li>
+         <li>достопримечательности</li>
+       </ul>
+     </div>
+   </div>
+  </div>
+ </div>
+
+    </section>
+    <section class="app__section">
+      <div class="gallery">
+  <div class="gallery__wrapper">
+    <h2 class="gallery__title">ГАЛЕРЕЯ</h2>
+    
+    <div class="gallery__main">
+      <div class="gallery__main-image-container">
+        <img class="gallery__main-image" src="images/dist/mainPage/1.jpg" alt="Главное изображение">
+        <div class="gallery__nav-arrows">
+          <button class="gallery__nav-arrow gallery__nav-arrow--prev">
+            <img src="images/dist/arrow-left.svg" alt="Предыдущее">
+          </button>
+          <button class="gallery__nav-arrow gallery__nav-arrow--next">
+            <img src="images/dist/arrow-right.svg" alt="Следующее">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery__thumbnails">
+      <div class="gallery__thumbnail" data-image="images/dist/mainPage/1.jpg">
+        <img src="images/dist/mainPage/1.jpg" alt="Миниатюра 1">
+      </div>
+      <div class="gallery__thumbnail" data-image="images/dist/mainPage/2.jpg">
+        <img src="images/dist/mainPage/2.jpg" alt="Миниатюра 2">
+      </div>
+      <div class="gallery__thumbnail" data-image="images/dist/mainPage/3.jpg">
+        <img src="images/dist/mainPage/3.jpg" alt="Миниатюра 3">
+      </div>
+      <div class="gallery__thumbnail" data-image="images/dist/mainPage/4.jpg">
+        <img src="images/dist/mainPage/4.jpg" alt="Миниатюра 4">
+      </div>
+      <div class="gallery__thumbnail" data-image="images/dist/mainPage/5.jpg">
+        <img src="images/dist/mainPage/5.jpg" alt="Миниатюра 5">
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="gallery__modal">
+    <div class="gallery__modal-content">
+      <button class="gallery__modal-close">
+        <img src="images/dist/x.svg" alt="Закрыть">
+      </button>
+      <img class="gallery__modal-image" src="" alt="Увеличенное изображение">
+      <div class="gallery__modal-nav">
+        <button class="gallery__modal-nav-arrow gallery__modal-nav-arrow--prev">
+          <img src="images/dist/arrow-left.svg" alt="Предыдущее">
+        </button>
+        <button class="gallery__modal-nav-arrow gallery__modal-nav-arrow--next">
+          <img src="images/dist/arrow-right.svg" alt="Следующее">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+    <section class="app__section">
+      <div class="reviews">
+  <div class="reviews__background">
+    <img src="images/dist/mainPage/12.jpg" alt="Лесной фон">
+  </div>
+  
+  <div class="reviews__content">
+    <div class="reviews__card">
+      <div class="reviews__quote-marks">"</div>
+      <div class="reviews__text">
+        Хорошее место, добродушные хозяевы, чисто, близко от центра города и в то же время в тихом месте, что немаловажно для комфортного отдыха. Из окон видно Плещеево озеро.
+      </div>
+      <div class="reviews__divider"></div>
+      <div class="reviews__author">sergey artemor</div>
+      <div class="reviews__navigation">
+        <button class="reviews__nav-arrow reviews__nav-arrow--prev">
+          <img src="images/dist/arrow-left.svg" alt="Предыдущий отзыв">
+        </button>
+        <button class="reviews__nav-arrow reviews__nav-arrow--next">
+          <img src="images/dist/arrow-right.svg" alt="Следующий отзыв">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+    <section class="app__section">
+      <div class="questions">
+  <div class="questions__wrapper">
+    <div class="questions__item">
+      <div class="questions__header">
+        <h3 class="questions__title">Есть ли в домах удобства для детей до 3 лет?</h3>
+        <button class="questions__toggle">
+          <span class="questions__icon">+</span>
+        </button>
+      </div>
+      <div class="questions__content">
+        <p class="questions__answer">Да. По запросу комплиментарно предоставляем детскую кроватку и стульчик для кормления.</p>
+      </div>
+    </div>
+
+    <div class="questions__item">
+      <div class="questions__header">
+        <h3 class="questions__title">Можно ли к вам с домашними животными?</h3>
+        <button class="questions__toggle">
+          <span class="questions__icon">+</span>
+        </button>
+      </div>
+      <div class="questions__content">
+        <p class="questions__answer">Да, мы рады гостям с домашними животными. Пожалуйста, предупредите нас заранее.</p>
+      </div>
+    </div>
+
+    <div class="questions__item">
+      <div class="questions__header">
+        <h3 class="questions__title">Какое время заезда и выезда?</h3>
+        <button class="questions__toggle">
+          <span class="questions__icon">+</span>
+        </button>
+      </div>
+      <div class="questions__content">
+        <p class="questions__answer">Заезд с 14:00, выезд до 12:00. При необходимости можно договориться о других временах.</p>
+      </div>
+    </div>
+
+    <div class="questions__item">
+      <div class="questions__header">
+        <h3 class="questions__title">Какие способы оплаты?</h3>
+        <button class="questions__toggle">
+          <span class="questions__icon">+</span>
+        </button>
+      </div>
+      <div class="questions__content">
+        <p class="questions__answer">Наличные, банковские карты, безналичный расчёт. Оплата при заезде или по договорённости.</p>
+      </div>
+    </div>
+
+    <div class="questions__item">
+      <div class="questions__header">
+        <h3 class="questions__title">Как к нам проехать?</h3>
+        <button class="questions__toggle">
+          <span class="questions__icon">+</span>
+        </button>
+      </div>
+      <div class="questions__content">
+        <p class="questions__answer">Мы находимся в 2 часах езды от Москвы, рядом с Переславль-Залесским. Подробные координаты и схему проезда высылаем после бронирования.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
   </main>
-
   <footer class="footer">
   <div class="footer__wrapper">
-    <div class="footer__parent">
-      <div class="footer__div1">
-        <a href="index.html">
-          <img class="footer__logo" src="images/dist/logo-main.svg">
-        </a>
+    <div class="footer__content">
+      <!-- Левая секция - Контакты -->
+      <div class="footer__section footer__contacts">
+        <h3 class="footer__section-title">Контакты</h3>
+        <div class="footer__address">
+          <div>Ярославская область</div>
+          <div>г. Переславль-Залеский</div>
+          <div>д. Веслево</div>
+        </div>
+        <a href="#" class="footer__map-link">Мы на карте</a>
+        <div class="footer__copyright">2025 Веслево клуб.. Все права защищены</div>
+        <div class="footer__copyright">Разработка сайта — Binom Studio</div>
       </div>
-      <div class="footer__div2 footer__text">
-        <div>Профессиональные услуги проектирования</div>
-      </div>
-      <div class="footer__div3">
-        <div class="footer__links">
-          <a href="about.html">О компании</a>
-          <a href="projects.html">Проекты</a>
-          <a href="contacts.html">Контакты</a>
+
+      <!-- Центральная секция - Коммуникация -->
+      <div class="footer__section footer__communication">
+        <div class="footer__phone">+7 (495) 846 - 10 - 50</div>
+        <div class="footer__email">zakaz@veslevo.club</div>
+        <div class="footer__social">
+          <a href="#" class="footer__social-item" aria-label="WhatsApp">
+            <img src="images/dist/mainPage/icon-whatsapp-logo.svg" alt="WhatsApp">
+          </a>
+          <a href="#" class="footer__social-item" aria-label="Telegram">
+            <img src="images/dist/mainPage/icon-telegram-logo.svg" alt="Telegram">
+          </a>
+          <a href="#" class="footer__social-item" aria-label="Email">
+            <img src="images/dist/mainPage/icon-mail.svg" alt="Email">
+          </a>
+          <a href="#" class="footer__social-item" aria-label="VKontakte">
+            <img src="images/dist/mainPage/icon-vk-logo.svg" alt="VKontakte">
+          </a>
         </div>
       </div>
-      <div class="footer__div4">
-        <div class="footer__contacts">
-          <a href="tel:74956095254">+7 (495) 609-52-54</a>
-          <a href="mailto:proekt@emeo.ru">proekt@emeo.ru</a>
-          <div>Москва, 2-й Кожуховский проезд, д. 29, корп. 2, стр. 16, офис 601</div>
-        </div>
+
+      <!-- Правая секция - Кнопки -->
+      <div class="footer__section footer__buttons">
+        <button class="footer__button">Забронировать</button>
+        <button class="footer__button">Найти бронь</button>
       </div>
-    </div>
-    <div class="footer__bottom">
-      <div>©2025, ЭОМ-Проект: разработка проектной документации</div>
-      <a href="#">Политика конфиденциальности</a>
     </div>
   </div>
 </footer>
-
 
 </div>
 

@@ -1,5 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Активные пункты меню
+  const menuItems = document.querySelectorAll('.header__menu-item');
+  
+  // Функция для установки активного пункта меню
+  function setActiveMenuItem(activeItem) {
+    menuItems.forEach(item => {
+      item.classList.remove('header__menu-item--active');
+    });
+    activeItem.classList.add('header__menu-item--active');
+  }
+
+  // Устанавливаем первый пункт активным по умолчанию
+  if (menuItems.length > 0) {
+    menuItems[0].classList.add('header__menu-item--active');
+  }
+
+  // Обработчики клика для пунктов меню
+  menuItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      setActiveMenuItem(item);
+    });
+  });
+
   // Модальные окна
   const menuModal = document.getElementById("menu-modal");
   const openMenuModalBtn = document.querySelector(".button-burger");
@@ -67,64 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
       closeAllModals();
     }
   });
-
-  // Hover эффекты для проектов
-  const hoverImage = document.querySelector(".projects__hover-image");
-  const hoverItems = document.querySelectorAll(".projects__item");
-  const container = document.querySelector(".projects__list");
-
-  hoverItems.forEach((item) => {
-    item.addEventListener("mouseenter", (e) => {
-      const imageUrl = item.getAttribute("data-image");
-      hoverImage.style.backgroundImage = `url(${imageUrl})`;
-      hoverImage.style.opacity = "1";
-      hoverImage.style.transform = "scale(1) translate(-50%, -50%)";
-
-      container.classList.add("dimmed");
-      item.classList.add("active");
-    });
-
-    item.addEventListener("mousemove", (e) => {
-      hoverImage.style.left = `${e.pageX}px`;
-      hoverImage.style.top = `${e.pageY}px`;
-    });
-
-    item.addEventListener("mouseleave", () => {
-      hoverImage.style.opacity = "0";
-      hoverImage.style.transform = "scale(0.5) translate(-50%, -50%)";
-
-      container.classList.remove("dimmed");
-      item.classList.remove("active");
-    });
-  });
-
-  // Форматирование телефона
-  document.querySelectorAll(".phone-input").forEach((input) => {
-    input.addEventListener("input", formatPhone);
-    input.addEventListener("blur", clearIfOnlyPrefix);
-  });
-
-  function formatPhone(e) {
-    let value = e.target.value.replace(/\D/g, ""); // Удаляем все нечисловые символы
-
-    if (value.startsWith("7")) value = value.slice(1);
-    if (value.startsWith("8")) value = value.slice(1);
-    value = "7" + value;
-
-    let formatted = "+7 ";
-    if (value.length > 1) formatted += "(" + value.substring(1, 4);
-    if (value.length >= 5) formatted += ") " + value.substring(4, 7);
-    if (value.length >= 8) formatted += "-" + value.substring(7, 9);
-    if (value.length >= 10) formatted += "-" + value.substring(9, 11);
-
-    e.target.value = formatted.trim();
-  }
-
-  function clearIfOnlyPrefix(e) {
-    if (e.target.value === "+7") {
-      e.target.value = "";
-    }
-  }
 
    // Инициализация Tiny Slider
    var slider = tns({
@@ -313,3 +278,308 @@ document.addEventListener('DOMContentLoaded', () => {
     faqAccordion.init();
   }
 });
+
+// Bnovo Widget Reinitialization
+let isMobile = window.innerWidth <= 980;
+let currentWidget = null;
+  
+// Функция для удаления старого виджета
+function removeOldWidget() {
+  const widgetContainer = document.getElementById('_bn_widget_adaptive');
+  if (widgetContainer) {
+    // Удаляем все дочерние элементы виджета
+    widgetContainer.innerHTML = '<a href="http://bnovo.ru/" id="_bnovo_link_" target="_blank" style="display: none;">Bnovo</a>';
+  }
+  
+  // Удаляем все элементы календаря и попапов
+  const calendarElements = document.querySelectorAll('[id*="calendar"], [id*="datepicker"], [class*="calendar"], [class*="datepicker"]');
+  calendarElements.forEach(element => {
+    element.remove();
+  });
+  
+  // Удаляем все элементы Bnovo
+  const bnovoElements = document.querySelectorAll('[id*="bnovo"], [class*="bnovo"]');
+  bnovoElements.forEach(element => {
+    if (!element.id.includes('_bn_widget_adaptive') && !element.id.includes('_bnovo_link_')) {
+      element.remove();
+    }
+  });
+}
+
+// Функция для инициализации виджета
+function initBnovoWidget() {
+  // Удаляем старый виджет перед созданием нового
+  removeOldWidget();
+  
+  Bnovo_Widget.init(function() {
+    Bnovo_Widget.open('_bn_widget_adaptive', {
+      type: "horizontal",
+      uid: "b453ef97-5e35-401c-875b-4700087677eb",
+      lang: "ru",
+      width: "100%",
+      background: "#D5D0A1",
+      bg_alpha: "100",
+      padding: "20",
+      padding_mobile: "20",
+      border_radius: "0",
+      font_type: "inter",
+      title_color: "#000000",
+      title_size: "30",
+      without_title: "on",
+      inp_color: "#3E5B81",
+      inp_bordhover: "#d6d6d6",
+      inp_bordcolor: "#d6d6d6",
+      inp_alpha: "100",
+      btn_background: "#737C06",
+      btn_background_over: "#737C06",
+      btn_textcolor: "#ffffff",
+      btn_textover: "#ffffff",
+      btn_bordcolor: "#737C06",
+      btn_bordhover: "#737C06",
+      adults_default: "1",
+      dates_preset: "on",
+      dfrom_tomorrow: "on",
+      dto_nextday: "on",
+      url: "http://veslevo.club/choose",
+      switch_mobiles: "on",
+      switch_mobiles_width: "980"
+    });
+  });
+}
+
+// Функция дебонсинга
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Обработчик изменения размера окна
+const handleResize = debounce(() => {
+  const currentIsMobile = window.innerWidth <= 980;
+  if (currentIsMobile !== isMobile) {
+    isMobile = currentIsMobile;
+    initBnovoWidget();
+  }
+}, 200);
+
+// Добавляем слушатель события resize
+window.addEventListener('resize', handleResize);
+
+// Инициализация виджета при загрузке страницы
+initBnovoWidget();
+
+// Houses Our Component - Factory для создания отдельных компонентов
+function createHousesOurComponent(blockId) {
+  return {
+    photoInterval: null,
+    currentPhotoIndex: 0,
+    currentTextIndex: 0,
+    photos: [],
+    textItems: [],
+    dots: [],
+    nextButton: null,
+    prevPhotoButton: null,
+    nextPhotoButton: null,
+    modal: null,
+    modalImage: null,
+    modalClose: null,
+    blockId: blockId,
+    wrapper: null,
+
+    init() {
+      this.wrapper = document.getElementById(`houses-our-wrapper-${this.blockId}`);
+      if (!this.wrapper) {
+        console.log(`Wrapper not found for block ${this.blockId}`);
+        return;
+      }
+
+      this.photos = this.wrapper.querySelectorAll('.houses-our__photo-item');
+      this.textItems = this.wrapper.querySelectorAll('.houses-our__text-item');
+      this.dots = this.wrapper.querySelectorAll(`[data-block="${this.blockId}"]`);
+      this.nextButton = document.getElementById(`houses-our-next-${this.blockId}`);
+      this.prevPhotoButton = document.getElementById(`houses-our-photo-prev-${this.blockId}`);
+      this.nextPhotoButton = document.getElementById(`houses-our-photo-next-${this.blockId}`);
+      this.modal = document.getElementById(`houses-our-modal-${this.blockId}`);
+      this.modalImage = document.getElementById(`houses-our-modal-image-${this.blockId}`);
+      this.modalClose = document.getElementById(`houses-our-modal-close-${this.blockId}`);
+
+      console.log(`Block ${this.blockId} initialized:`, {
+        photos: this.photos.length,
+        textItems: this.textItems.length,
+        dots: this.dots.length,
+        nextButton: !!this.nextButton,
+        prevPhotoButton: !!this.prevPhotoButton,
+        nextPhotoButton: !!this.nextPhotoButton,
+        modal: !!this.modal,
+        modalImage: !!this.modalImage,
+        modalClose: !!this.modalClose
+      });
+
+      if (this.photos.length > 0) {
+        this.bindEvents();
+        this.startPhotoAutoSlide();
+      }
+    },
+
+    bindEvents() {
+      // Клик по точкам для переключения текста
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          this.switchText(index);
+        });
+      });
+
+      // Клик по стрелке для следующего текста
+      this.nextButton?.addEventListener('click', () => {
+        this.nextText();
+      });
+
+      // Клик по стрелке "предыдущее фото"
+      this.prevPhotoButton?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.stopPhotoAutoSlide();
+        this.prevPhoto();
+      });
+
+      // Клик по стрелке "следующее фото"
+      this.nextPhotoButton?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.stopPhotoAutoSlide();
+        this.nextPhoto();
+      });
+
+      // Клик по фото для открытия модального окна
+      const photoContainer = this.wrapper.querySelector('.houses-our__photo');
+      if (photoContainer) {
+        photoContainer.addEventListener('click', (e) => {
+          // Не открывать модальное окно при клике на стрелки
+          if (!e.target.closest('.houses-our__photo-arrow')) {
+            this.openModal();
+          }
+        });
+      }
+
+      // Закрытие модального окна
+      this.modalClose?.addEventListener('click', () => {
+        this.closeModal();
+      });
+
+      // Закрытие модального окна по клику вне изображения
+      this.modal?.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.closeModal();
+        }
+      });
+
+      // Закрытие модального окна по Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.modal?.classList.contains('active')) {
+          this.closeModal();
+        }
+      });
+    },
+
+    startPhotoAutoSlide() {
+      this.photoInterval = setInterval(() => {
+        this.nextPhoto();
+      }, 12000); // 12 секунд
+    },
+
+    stopPhotoAutoSlide() {
+      if (this.photoInterval) {
+        clearInterval(this.photoInterval);
+        this.photoInterval = null;
+      }
+    },
+
+    nextPhoto() {
+      this.currentPhotoIndex = (this.currentPhotoIndex + 1) % this.photos.length;
+      this.updatePhoto();
+    },
+
+    prevPhoto() {
+      this.currentPhotoIndex = (this.currentPhotoIndex - 1 + this.photos.length) % this.photos.length;
+      this.updatePhoto();
+    },
+
+    updatePhoto() {
+      console.log(`Block ${this.blockId}: Updating photo to index ${this.currentPhotoIndex}`);
+      this.photos.forEach((photo, index) => {
+        photo.classList.toggle('active', index === this.currentPhotoIndex);
+      });
+    },
+
+    switchText(index) {
+      console.log(`Block ${this.blockId}: Switching text to index ${index}`);
+      this.currentTextIndex = index;
+      this.updateText();
+      this.updateDots();
+    },
+
+    nextText() {
+      this.currentTextIndex = (this.currentTextIndex + 1) % this.textItems.length;
+      console.log(`Block ${this.blockId}: Next text, new index ${this.currentTextIndex}`);
+      this.updateText();
+      this.updateDots();
+    },
+
+    updateText() {
+      this.textItems.forEach((item, index) => {
+        item.classList.toggle('active', index === this.currentTextIndex);
+      });
+    },
+
+    updateDots() {
+      this.dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentTextIndex);
+      });
+    },
+
+    openModal() {
+      console.log(`Block ${this.blockId}: Opening modal`);
+      if (this.modal && this.modalImage) {
+        const activePhoto = this.photos[this.currentPhotoIndex];
+        console.log(`Block ${this.blockId}: Active photo src:`, activePhoto.src);
+        this.modalImage.src = activePhoto.src;
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Блокируем скролл
+      } else {
+        console.log(`Block ${this.blockId}: Modal or modalImage not found`);
+        console.log(`Modal:`, this.modal);
+        console.log(`ModalImage:`, this.modalImage);
+      }
+    },
+
+    closeModal() {
+      if (this.modal) {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = ''; // Восстанавливаем скролл
+      }
+    }
+  };
+}
+
+// Инициализация всех компонентов houses-our
+if (document.querySelector('.houses-our')) {
+  console.log('Houses-our section found, initializing components...');
+  const housesOurComponents = [];
+  
+  // Создаем отдельные компоненты для каждого блока
+  for (let i = 1; i <= 3; i++) {
+    console.log(`Creating component for block ${i}...`);
+    const component = createHousesOurComponent(i);
+    component.init();
+    housesOurComponents.push(component);
+  }
+  
+  console.log('All components initialized:', housesOurComponents.length);
+} else {
+  console.log('Houses-our section not found');
+}
