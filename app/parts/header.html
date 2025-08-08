@@ -1,26 +1,26 @@
 <header class="header">
+  <nav class="header__nav">
   <div class="header__left">
-    <a href="index.html">
-      <img src="images/dist/logo-main.svg">
-    </a>
-  </div>
-  <div class="header__right">
-    <div class="header__phone">
-      <a href="tel:+74956095254">+7 (495) 609-52-54</a>
-    </div>
     <div class="header__button">
-      <!--#set var="title" value="Связаться" -->
-      <!--#include virtual="/parts/button.html" -->
+      <!--#include virtual="/parts/button-burger.html" -->
     </div>
-    <div class="header__menu">
-      <span></span>
-      <span></span>
+    <div class="header__logo">
+      <a href="index.html">
+        <img src="images/dist/mainPage/logo.png" alt="Logo">
+      </a>
     </div>
   </div>
+
+    <ul class="header__menu">
+      <li class="header__menu-item header__menu-item--active"><a href="index.html">О нас</a></li>
+      <li class="header__menu-item"><a href="houses.html">Дома</a></li>
+      <li class="header__menu-item"><a href="#">Спецпредложения</a></li>
+      <li class="header__menu-item"><a href="#">Фотогалерея</a></li>
+      <li class="header__menu-item"><a href="#">Развлечения</a></li>
+      <li class="header__menu-item"><a href="#">Контакты</a></li>
+      <li class="header__menu-item"><a href="#">Корпоративным клиентам</a></li>
+      <li class="header__menu-item"><a href="#">Поиск брони</a></li>
+    </ul>
+  </nav>
   <!--#include virtual="/parts/menu-modal.html" -->
-  <!--#include virtual="/parts/contact-modal.html" -->
-
-
 </header>
-
-

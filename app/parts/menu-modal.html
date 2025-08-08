@@ -1,22 +1,52 @@
-<div class="menu-modal" id="menu-modal">
+<nav class="menu-modal" id="menu-modal">
   <div class="menu-modal__container">
-    <div class="menu-modal__close">
-      <img src="images/dist/x.svg">
-    </div>
-    <div class="menu-modal__logo">
-      <a href="index.html">
-        <img src="images/dist/logo-main-dark.svg">
-      </a>
-    </div>
 
-    <div class="menu-modal__list">
-      <a class="menu-modal__link menu-modal__link--active" href="about.html">О компании</a>
-      <a class="menu-modal__link" href="projects.html">Проекты</a>
-      <a class="menu-modal__link" href="contacts.html">Контакты</a>
+    <button class="menu-modal__close" aria-label="Close menu">
+      <img src="images/dist/x.svg" alt="Close">
+    </button>
+
+   <div>
+    <ul class="menu-modal__list">
+      <li><a class="menu-modal__link menu-modal__link--active" href="#">О нас</a></li>
+      <li><a class="menu-modal__link" href="#">Дома</a></li>
+      <li><a class="menu-modal__link" href="#">Спецпредложения</a></li>
+      <li><a class="menu-modal__link" href="#">Фотогалерея</a></li>
+      <li><a class="menu-modal__link" href="#">Развлечения</a></li>
+      <li><a class="menu-modal__link menu-modal__link--has-submenu" href="#">Контакты</a>
+      
+        <ul class="menu-modal__sublist">
+          <li><a class="menu-modal__sublink" href="#">Контакты</a></li>
+          <li><a class="menu-modal__sublink" href="#">Способы оплаты</a></li>
+          <li><a class="menu-modal__sublink" href="#">Документы</a></li>
+        </ul>
+      </li>
+
+      <li><a class="menu-modal__link" href="#">Корпоративным клиентам</a></li>
+      <li><a class="menu-modal__link" href="#">Поиск брони</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <section class="menu-modal__contacts">
+      <div class="menu-modal__phone">
+        <img src="images/dist/mainPage/phone.png" alt="Phone">
+        <a href="tel:+74958461050">+7 (495) 846-10-50</a>
+      </div>
+      <div class="menu-modal__social">
+        <a href="#" aria-label="WhatsApp"><img src="images/dist/mainPage/wa.png" alt="WhatsApp"></a>
+        <a href="#" aria-label="Telegram"><img src="images/dist/mainPage/tg.png" alt="Telegram"></a>
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/mail2.png" alt="Email"></a>
+      </div>
+    </section>
+
+    <div class="menu-modal__buttons">
+      <a href="#" class="menu-modal__button">Забронировать</a>
+      <div class="menu-modal__social-icons">
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/vk.png" alt="Vk"></a>
+        <a href="#" aria-label="Email"><img src="images/dist/mainPage/trip.png" alt="Visor"></a>
+      </div>
     </div>
-    <div class="menu-modal__contacts">
-      <a href="tel:74956095254">+7 (495) 609-52-54</a>
-      <a href="mailto:proekt@emeo.ru">proekt@emeo.ru</a>
-    </div>
+   </div>
+
   </div>
-</div>
+</nav>

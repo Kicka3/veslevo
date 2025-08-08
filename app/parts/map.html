@@ -1,0 +1,26 @@
+<div class="map">
+  <div class="map__wrapper">
+    <div id="map" class="map__container"></div>
+  </div>
+</div>
+
+<script src="js/env.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+<script>
+  ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+      center: [56.7369, 38.8514], // Координаты озера Плещеево
+      zoom: 10,
+      controls: ['zoomControl', 'geolocationControl']
+    });
+
+    // Добавляем маркер на карту
+    var myPlacemark = new ymaps.Placemark([56.7369, 38.8514], {
+      balloonContent: 'Озеро Плещеево'
+    }, {
+      preset: 'islands#brownDotIcon'
+    });
+
+    myMap.geoObjects.add(myPlacemark);
+  });
+</script>

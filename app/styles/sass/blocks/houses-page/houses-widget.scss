@@ -1,0 +1,343 @@
+.houses-widget {
+  margin-bottom: 60px;
+
+  &__content {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 0 30px 0;
+
+    @media (max-width: $tablet-small) {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+    
+    @media (max-width: $mobile-large) {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// Bnovo Widget Styles
+.div_for__bn_widget_adaptive {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+
+  @media screen and (min-width: 980px) {
+    width: 100%;
+    max-width: 1024px;
+    padding: 0 15px;
+    margin: auto;
+    
+    #absolute_div_for__bn_widget_adaptive {
+      position: relative;
+      width: calc(100% - 30px);
+      max-width: 1024px;
+      z-index: 1000;
+    }
+  }
+
+  @media screen and (max-width: 980px) {
+    width: 100%;
+    margin: auto;
+    max-width: 100%;
+    
+    #absolute_div_for__bn_widget_adaptive {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      z-index: 1000;
+    }
+  }
+}
+
+#absolute_div_for__bn_widget_adaptive {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+#_bn_widget_adaptive {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  font-family: 'Inter', 'Montserrat', sans-serif !important;
+  
+  // Скрываем ссылку на Bnovo
+  #_bnovo_link_ {
+    display: none !important;
+  }
+}
+
+// Стили для календаря - чтобы он открывался поверх контента
+.bnovo-calendar,
+.bnovo-datepicker,
+[id*="calendar"],
+[id*="datepicker"],
+[class*="calendar"],
+[class*="datepicker"] {
+  position: absolute !important;
+  z-index: 9999 !important;
+  background: white !important;
+  border: 1px solid #d6d6d6 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  margin-top: 5px !important;
+}
+
+// Стили для элементов виджета (они применяются динамически)
+.bnovo-widget {
+  
+  // Контейнер виджета
+  &-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+  }
+
+  // Группа полей ввода
+  &-input-group {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 140px !important;
+    position: relative !important;
+  }
+
+  // Поля ввода
+  &-input {
+    background: #ffffff !important;
+    border: 1px solid #d6d6d6 !important;
+    color: #000000 !important;
+    padding: 12px 15px !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-family: 'Inter', 'Montserrat', sans-serif !important;
+    transition: border-color 0.3s ease !important;
+    outline: none !important;
+
+    &:hover,
+    &:focus {
+      border-color: #b0b0b0 !important;
+    }
+
+    &::placeholder {
+      color: #999999 !important;
+      font-size: 13px !important;
+    }
+  }
+
+  // Кнопка
+  &-button {
+    background: #737C06 !important;
+    color: #ffffff !important;
+    border: 1px solid #737C06 !important;
+    padding: 12px 24px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', 'Montserrat', sans-serif !important;
+    transition: all 0.3s ease !important;
+    min-width: 150px !important;
+    white-space: nowrap !important;
+
+    &:hover {
+      background: #737C06 !important;
+      border-color: #737C06 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 8px rgba(229, 49, 63, 0.3) !important;
+    }
+
+    &:active {
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 4px rgba(229, 49, 63, 0.3) !important;
+    }
+  }
+
+  // Адаптивность виджета
+  @media screen and (max-width: 980px) {
+    &-container {
+      flex-direction: column !important;
+      gap: 12px !important;
+      align-items: stretch !important;
+    }
+    
+    &-input-group {
+      width: 100% !important;
+      min-width: unset !important;
+    }
+    
+    &-input,
+    &-button {
+      width: 100% !important;
+    }
+    
+    &-button {
+      min-width: unset !important;
+      padding: 15px 24px !important;
+      font-size: 16px !important;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    &-input,
+    &-button {
+      font-size: 16px !important; // Предотвращает зум на iOS
+    }
+  }
+}
+
+// Общие глобальные переопределения для Bnovo виджета
+[id^="bnovo"] {
+  font-family: 'Inter', 'Montserrat', sans-serif !important;
+}
+
+// Дополнительные стили для демо
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.demo-content {
+  padding: 40px 0;
+  text-align: center;
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+.booking-widget {
+  background: #EBCB9C;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+    position: relative;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+    font-family: 'Inter', 'Montserrat', sans-serif;
+  }
+
+  &__input {
+    background: #ffffff;
+    border: 1px solid #d6d6d6;
+    color: #333;
+    padding: 12px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding-right: 35px;
+
+    &:hover {
+      border-color: #b0b0b0;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  &__button {
+    background: #737C06;
+    color: #ffffff;
+    border: 1px solid #737C06;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    white-space: nowrap;
+
+    &:hover {
+      background: #737C06;
+      border-color: #737C06;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(229, 49, 63, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(229, 49, 63, 0.3);
+    }
+  }
+
+  // Адаптивность
+  @media screen and (max-width: 980px) {
+    &__container {
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+    }
+    
+    &__field {
+      width: 100%;
+      min-width: unset;
+    }
+    
+    &__input,
+    &__button {
+      width: 100%;
+    }
+    
+    &__button {
+      min-width: unset;
+      padding: 15px 24px;
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    &__input,
+    &__button {
+      font-size: 16px; // Предотвращает зум на iOS
+    }
+  }
+}

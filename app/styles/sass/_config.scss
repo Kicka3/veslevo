@@ -3,18 +3,25 @@
 // USER VARIABLES SECTION
 
 :root {
-	--color-accent: orange;
-	--bg-dark: #1A1A1A;
+	--color-accent: #EBCB9C;
+	--color-additional: #A1B63D;
+
+	--bg-dark-terracotta: #573931;
+	--bg-dark: #36322d;
 	--bg-middle: #D0CCC1;
+	--bg-white: #FFFFFF;
+
 	--text-white: #FFFFFF;
-	--text-main: #D0CCC1;
+	--text-main: #f7f4ee;
 	--text-light: #828181;
-	--text-dark: #383838;
+	--text-dark: #35322D;
+	--text-grey: #707070;
+	--text-black: #000000;
 }
 
-$fontsize: 17px; // Body Font Size
-$lineheight: 1.65; // Document Line Height
-$userfont: gotham-pro, sans-serif; // User Font Family
+$fontsize: 16px; // Body Font Size
+$lineheight: 1.1; // Document Line Height
+$userfont: Montserrat, sans-serif; // User Font Family
 $secondaryfont: roboto, sans-serif; // User Font Family
 
 
@@ -23,12 +30,19 @@ $grid-gutter-width: 30px;
 $gutter: $grid-gutter-width;
 
 	// Breakpoint
-$grid-breakpoint-l: 1366px;
+// $grid-breakpoint-l: 1366px;
+$grid-breakpoint-l: 1670px;
 //$grid-breakpoint-m: 1200px;
 $grid-breakpoint-s: 767px;
 
-$tablet: 1359px;
-$mobile: 767px;
+$desktop-large: 1920px; // Для больших десктопных экранов
+$desktop: 1440px; // Стандартный десктоп
+$tablet-large: 1280px; // Большой планшет
+$tablet: 1024px; // Существующий планшет, часто используемый
+$tablet-small: 768px; // Маленький планшет
+$mobile-large: 600px; // Большой мобильный`
+$mobile: 480px; // Существующий мобильный, широко распространённый
+$mobile-small: 320px; // Очень маленький мобильный экран
 
 	// Margin
 $grid-margin-l: 80px;
@@ -45,8 +59,21 @@ $grid-margin-s: 16px;
 	}
 }
 
-@include font('gotham-pro', normal, 400, '../fonts/gotham-pro-regular.ttf');
-@include font('gotham-pro', normal, 700, '../fonts/gotham-pro-bold.ttf');
+//HelveticaNeue
+@include font('HelveticaNeue', normal, 700, '../fonts/HelveticaNeue-Bold.woff2');
+@include font('HelveticaNeue', normal, 300, '../fonts/HelveticaNeue-Light.woff2');
+@include font('HelveticaNeue', normal, 500, '../fonts/HelveticaNeue-Medium.woff2');
+
+// Montserrat
+@include font('Montserrat', normal, 700, '../fonts/Montserrat-Bold.woff2');
+@include font('Montserrat', normal, 800, '../fonts/Montserrat-ExtraBold.woff2');
+@include font('Montserrat', normal, 600, '../fonts/Montserrat-SemiBold.woff2');
+@include font('Montserrat', normal, 300, '../fonts/Montserrat-Light.woff2');
+@include font('Montserrat', normal, 400, '../fonts/Montserrat-Regular.ttf');
+
+// PlayfairDisplay
+@include font('PlayfairDisplay', normal, 400, '../fonts/PlayfairDisplay-Italic.ttf');
+@include font('PlayfairDisplay', normal, 700, '../fonts/PlayfairDisplay-Italic-Bold.ttf');
 
 body {
 	font-family: $userfont;
@@ -55,7 +82,7 @@ body {
 	min-width: 360px;
 	position: relative;
 	overflow-x: hidden;
-	background-color: var(--bg-dark);
+	background-color: var(--bg-white);
 	color: var(--text-main);
 }
 
@@ -64,13 +91,12 @@ body.no-scroll {
 }
 
 a {
-	color: var(--text-main);
+	color: var(--text-black);
 
 	&:hover {
-		color: var(--text-main);
+		color: var(--text-black);
 	}
 }
-
 
 // OPTIONAL SETTINGS
 
@@ -81,17 +107,6 @@ a {
 ::selection {
 	// background-color: var(--color-accent);
 	// color: #fff;
-}
-
-input,
-textarea {
-	// outline: none;
-	// &:focus:required:invalid {
-	//   border-color: red;
-	// }
-	// &:required:valid {
-	//   border-color: green;
-	// }
 }
 
 [class*="--m-container"] {
@@ -111,6 +126,125 @@ textarea {
 		padding-left: $grid-margin-s;
 		padding-right: $grid-margin-s;
 	}
+}
+
+// Глобальные стили для скроллбаров
+// Скрываем горизонтальные скроллбары везде
+* {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari/Opera
+  }
+}
+
+// Стилизуем вертикальные скроллбары только для элементов с overflow-y: auto/scroll
+*[style*="overflow-y: auto"],
+*[style*="overflow-y: scroll"],
+.overflow-y-auto,
+.overflow-y-scroll {
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: #D0CCC1 transparent; // Firefox
+  
+  &::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #D0CCC1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #A1B63D;
+    }
+  }
+  
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+// Специальные стили для конкретных элементов с прокруткой
+.houses-our__description,
+.reviews__card,
+.about__content {
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC1 transparent;
+  
+  &::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #D0CCC1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #A1B63D;
+    }
+  }
+  
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+// Принудительное скрытие стрелочек для всех скроллбаров
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+// Дополнительные стили для всех элементов с overflow
+[style*="overflow"] {
+  &::-webkit-scrollbar-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-corner {
+    display: none !important;
+  }
+}
+
+// Глобальное скрытие стрелочек для всех скроллбаров
+html, body, * {
+  &::-webkit-scrollbar-button:single-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:double-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:start {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:end {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:increment {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:decrement {
+    display: none !important;
+  }
 }
 
 
