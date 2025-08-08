@@ -1,5 +1,24 @@
 # Veslevo Project
 
+## Использованные библиотеки
+
+### Tiny Slider
+- **Версия**: 2.9.4
+- **CDN**: https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js
+- **CSS**: https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css
+- **Назначение**: Карусель для блока "Преимущества Веслево Клуб"
+- **Функции**: 
+  - Бесконечная прокрутка
+  - Перетаскивание мышью и тач-устройствами
+  - Адаптивное отображение слайдов
+  - Автоматическая прокрутка
+
+### Font Awesome
+- **Версия**: 6.5.2
+- **CDN**: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css
+- **Назначение**: Иконки для интерфейса
+- **Использование**: Стрелки навигации, социальные иконки
+
 ## Настройка переменных окружения
 
 ### Яндекс.Карты API
