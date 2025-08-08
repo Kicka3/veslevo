@@ -687,6 +687,122 @@ a:hover {
   }
 }
 
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+*[style*="overflow-y: auto"],
+*[style*="overflow-y: scroll"],
+.overflow-y-auto,
+.overflow-y-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC1 transparent;
+}
+*[style*="overflow-y: auto"]::-webkit-scrollbar,
+*[style*="overflow-y: scroll"]::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-y-scroll::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+*[style*="overflow-y: auto"]::-webkit-scrollbar-track,
+*[style*="overflow-y: scroll"]::-webkit-scrollbar-track,
+.overflow-y-auto::-webkit-scrollbar-track,
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+*[style*="overflow-y: auto"]::-webkit-scrollbar-thumb,
+*[style*="overflow-y: scroll"]::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb,
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #D0CCC1;
+  border-radius: 3px;
+}
+*[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover,
+*[style*="overflow-y: scroll"]::-webkit-scrollbar-thumb:hover,
+.overflow-y-auto::-webkit-scrollbar-thumb:hover,
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+  background: #A1B63D;
+}
+*[style*="overflow-y: auto"]::-webkit-scrollbar-button,
+*[style*="overflow-y: scroll"]::-webkit-scrollbar-button,
+.overflow-y-auto::-webkit-scrollbar-button,
+.overflow-y-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+.houses-our__description,
+.reviews__card,
+.about__content {
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC1 transparent;
+}
+.houses-our__description::-webkit-scrollbar,
+.reviews__card::-webkit-scrollbar,
+.about__content::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+.houses-our__description::-webkit-scrollbar-track,
+.reviews__card::-webkit-scrollbar-track,
+.about__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.houses-our__description::-webkit-scrollbar-thumb,
+.reviews__card::-webkit-scrollbar-thumb,
+.about__content::-webkit-scrollbar-thumb {
+  background: #D0CCC1;
+  border-radius: 3px;
+}
+.houses-our__description::-webkit-scrollbar-thumb:hover,
+.reviews__card::-webkit-scrollbar-thumb:hover,
+.about__content::-webkit-scrollbar-thumb:hover {
+  background: #A1B63D;
+}
+.houses-our__description::-webkit-scrollbar-button,
+.reviews__card::-webkit-scrollbar-button,
+.about__content::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+[style*=overflow]::-webkit-scrollbar-button {
+  display: none !important;
+}
+[style*=overflow]::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+html::-webkit-scrollbar-button:single-button, body::-webkit-scrollbar-button:single-button, *::-webkit-scrollbar-button:single-button {
+  display: none !important;
+}
+html::-webkit-scrollbar-button:double-button, body::-webkit-scrollbar-button:double-button, *::-webkit-scrollbar-button:double-button {
+  display: none !important;
+}
+html::-webkit-scrollbar-button:start, body::-webkit-scrollbar-button:start, *::-webkit-scrollbar-button:start {
+  display: none !important;
+}
+html::-webkit-scrollbar-button:end, body::-webkit-scrollbar-button:end, *::-webkit-scrollbar-button:end {
+  display: none !important;
+}
+html::-webkit-scrollbar-button:increment, body::-webkit-scrollbar-button:increment, *::-webkit-scrollbar-button:increment {
+  display: none !important;
+}
+html::-webkit-scrollbar-button:decrement, body::-webkit-scrollbar-button:decrement, *::-webkit-scrollbar-button:decrement {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -2086,6 +2202,243 @@ a:hover {
   }
 }
 
+.houses-advantages {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  position: relative;
+  background: #FFFFFF;
+  padding: 60px 0;
+}
+@media (max-width: 1024px) {
+  .houses-advantages {
+    padding: 40px 0;
+  }
+}
+@media (max-width: 480px) {
+  .houses-advantages {
+    padding: 30px 0;
+  }
+}
+.houses-advantages__container {
+  max-width: 1890px;
+  margin: 0 auto;
+}
+.houses-advantages__title {
+  font-family: "Inter", sans-serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #5D4118;
+  text-align: center;
+  margin: 0 0 30px 0;
+  text-transform: uppercase;
+}
+@media (max-width: 1024px) {
+  .houses-advantages__title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .houses-advantages__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+.houses-advantages__carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.houses-advantages__controls {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  background: transparent;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 10;
+  pointer-events: none;
+}
+.houses-advantages__controls:focus {
+  outline: none;
+}
+.houses-advantages__controls li {
+  pointer-events: auto;
+  background: rgba(90, 114, 97, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 0 20px;
+}
+.houses-advantages__controls li:hover {
+  background: rgba(161, 182, 61, 0.9);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+}
+@media (max-width: 480px) {
+  .houses-advantages__controls li {
+    width: 36px;
+    height: 36px;
+    margin: 0 10px;
+  }
+}
+.houses-advantages__controls li img {
+  width: 20px;
+  height: 20px;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+@media (max-width: 480px) {
+  .houses-advantages__controls li img {
+    width: 16px;
+    height: 16px;
+  }
+}
+.houses-advantages__slider {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.houses-advantages__slider:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.houses-advantages .tns-slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+}
+.houses-advantages .tns-item {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.houses-advantages__slide {
+  height: 390px;
+  position: relative;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0 10px;
+}
+@media (max-width: 1024px) {
+  .houses-advantages__slide {
+    height: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .houses-advantages__slide {
+    height: 250px;
+  }
+}
+.houses-advantages__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.houses-advantages__bg-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.houses-advantages__overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 90%;
+  height: 88%;
+  background: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 40px;
+}
+@media (max-width: 1024px) {
+  .houses-advantages__overlay {
+    width: 85%;
+    height: 85%;
+    padding: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .houses-advantages__overlay {
+    width: 70%;
+    height: 84%;
+    padding: 20px;
+  }
+}
+@media (max-width: 375px) {
+  .houses-advantages__overlay {
+    width: 60%;
+    height: 84%;
+  }
+}
+.houses-advantages__slide-title {
+  color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 1024px) {
+  .houses-advantages__slide-title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 480px) {
+  .houses-advantages__slide-title {
+    font-size: 24px;
+  }
+}
+
 .houses-hero {
   height: 292px;
   position: relative;
@@ -2489,27 +2842,40 @@ a:hover {
   text-align: center;
   font-weight: 500;
   color: var(--text-black);
-  overflow: auto;
+  /* Скролл по вертикали, если текст не влезает */
   max-height: 280px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
   overflow-y: auto;
   overflow-x: hidden;
-  text-overflow: ellipsis;
+  scrollbar-width: thin;
+  scrollbar-color: #5A7261 #FDFFF0;
+}
+.houses-our__description::-webkit-scrollbar {
+  width: 6px;
+}
+.houses-our__description::-webkit-scrollbar-track {
+  background: #FDFFF0;
+  border-radius: 3px;
+}
+.houses-our__description::-webkit-scrollbar-thumb {
+  background: #5A7261;
+  border-radius: 3px;
 }
 @media (max-width: 1024px) {
   .houses-our__description {
     font-size: 18px;
     padding: 12px 24px;
-    min-height: 260px;
-    max-height: 100%;
+    min-height: 238px;
   }
 }
 @media (max-width: 1024px) {
   .houses-our__description {
     font-size: 16px;
     min-height: 238px;
+  }
+}
+@media (max-width: 768px) {
+  .houses-our__description {
+    min-height: 210px;
   }
 }
 @media (max-width: 480px) {

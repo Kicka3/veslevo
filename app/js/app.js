@@ -566,20 +566,63 @@ function createHousesOurComponent(blockId) {
   };
 }
 
-// Инициализация всех компонентов houses-our
-if (document.querySelector('.houses-our')) {
-  console.log('Houses-our section found, initializing components...');
-  const housesOurComponents = [];
-  
-  // Создаем отдельные компоненты для каждого блока
-  for (let i = 1; i <= 3; i++) {
-    console.log(`Creating component for block ${i}...`);
-    const component = createHousesOurComponent(i);
-    component.init();
-    housesOurComponents.push(component);
-  }
-  
-  console.log('All components initialized:', housesOurComponents.length);
-} else {
-  console.log('Houses-our section not found');
+// Бесконечная карусель преимуществ с Tiny Slider
+function initHousesAdvantagesCarousel() {
+  const slider = tns({
+    container: '#fixedWidth',
+    loop: true,
+    slideBy: 'page',
+    nav: false,    
+    autoplay: false,
+    autoplayTimeout: 10000,
+    speed: 400,
+    autoplayButtonOutput: false,
+    mouseDrag: true,
+    lazyload: true,
+    controlsContainer: "#customize-controls",
+    fixedWidth: 550,
+    center: true,
+    swipeAngle: false,
+    responsive: {
+      320: {
+        items: 1,
+      },
+      640: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+      },
+      1140: {
+        items: 1,
+      }
+    }
+  });
 }
+
+// Инициализация всех компонентов
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, checking Tiny Slider availability...');
+  console.log('tns function available:', typeof tns);
+  
+  // Инициализация бесконечной карусели преимуществ
+  initHousesAdvantagesCarousel();
+  
+  // Инициализация существующих компонентов houses-our
+  if (document.querySelector('.houses-our')) {
+    console.log('Houses-our section found, initializing components...');
+    const housesOurComponents = [];
+    
+    // Создаем отдельные компоненты для каждого блока
+    for (let i = 1; i <= 3; i++) {
+      console.log(`Creating component for block ${i}...`);
+      const component = createHousesOurComponent(i);
+      component.init();
+      housesOurComponents.push(component);
+    }
+    
+    console.log('All components initialized:', housesOurComponents.length);
+  } else {
+    console.log('Houses-our section not found');
+  }
+});

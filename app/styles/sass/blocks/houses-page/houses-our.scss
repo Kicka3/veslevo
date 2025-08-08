@@ -251,6 +251,47 @@
     }
   }
 
+  // &__description {
+  //   font-family: "Inter", sans-serif;
+  //   line-height: 1.4;
+  //   margin: 0 0 20px 0;
+  //   padding: 16px 36px;
+  //   font-size: 22px;
+  //   text-align: center;
+  //   font-weight: 500;
+  //   color: var(--text-black);
+  //   overflow: auto;
+  //   max-height: 280px;
+  //   display: -webkit-box;
+  //   -webkit-box-orient: vertical;
+  //   // -webkit-line-clamp: 8;
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  //   text-overflow: ellipsis;
+
+  //   @media (max-width: 1024px) {
+  //     font-size: 18px;
+  //     padding: 12px 24px;
+  //     min-height: 260px;
+  //     max-height: 100%;
+  //   }
+
+  //   @media (max-width: $tablet) {
+  //     font-size: 16px;
+  //     min-height: 238px;
+  //   }
+
+  //   @media (max-width: $tablet-small) {
+  //        min-height: 210px;
+  //       //  -webkit-line-clamp: 9;
+  //   }
+
+  //   @media (max-width: $mobile) {
+  //     font-size: 14px;
+  //     // -webkit-line-clamp: 10;
+  //   }
+  // }
+
   &__description {
     font-family: "Inter", sans-serif;
     line-height: 1.4;
@@ -260,27 +301,41 @@
     text-align: center;
     font-weight: 500;
     color: var(--text-black);
-    overflow: auto;
+    
+    /* Скролл по вертикали, если текст не влезает */
     max-height: 280px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 8;
     overflow-y: auto;
     overflow-x: hidden;
-    text-overflow: ellipsis;
-
+    scrollbar-width: thin;
+    scrollbar-color: #5A7261 #FDFFF0;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #FDFFF0;
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #5A7261;
+      border-radius: 3px;
+    }
+  
     @media (max-width: 1024px) {
       font-size: 18px;
       padding: 12px 24px;
-      min-height: 260px;
-      max-height: 100%;
+      min-height: 238px;
     }
-
+  
     @media (max-width: $tablet) {
       font-size: 16px;
       min-height: 238px;
     }
-
+  
+    @media (max-width: $tablet-small) {
+      min-height: 210px;
+    }
+  
     @media (max-width: $mobile) {
       font-size: 14px;
     }

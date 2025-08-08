@@ -128,5 +128,124 @@ a {
 	}
 }
 
+// Глобальные стили для скроллбаров
+// Скрываем горизонтальные скроллбары везде
+* {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari/Opera
+  }
+}
+
+// Стилизуем вертикальные скроллбары только для элементов с overflow-y: auto/scroll
+*[style*="overflow-y: auto"],
+*[style*="overflow-y: scroll"],
+.overflow-y-auto,
+.overflow-y-scroll {
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: #D0CCC1 transparent; // Firefox
+  
+  &::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #D0CCC1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #A1B63D;
+    }
+  }
+  
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+// Специальные стили для конкретных элементов с прокруткой
+.houses-our__description,
+.reviews__card,
+.about__content {
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC1 transparent;
+  
+  &::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #D0CCC1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #A1B63D;
+    }
+  }
+  
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+// Принудительное скрытие стрелочек для всех скроллбаров
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+// Дополнительные стили для всех элементов с overflow
+[style*="overflow"] {
+  &::-webkit-scrollbar-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-corner {
+    display: none !important;
+  }
+}
+
+// Глобальное скрытие стрелочек для всех скроллбаров
+html, body, * {
+  &::-webkit-scrollbar-button:single-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:double-button {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:start {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:end {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:increment {
+    display: none !important;
+  }
+  
+  &::-webkit-scrollbar-button:decrement {
+    display: none !important;
+  }
+}
+
 
 
